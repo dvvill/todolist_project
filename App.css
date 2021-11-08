@@ -1,0 +1,58 @@
+*{
+  box-sizing: border-box;
+  border: red solid 1px;
+}
+
+h1{
+  text-align: center;
+}
+
+.lists{
+  text-align: center;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav{
+  text-align: center;
+  border: solid black 1px;
+}
+
+
+.gif-list a {
+  display: block;
+  margin: auto;
+}
+
+.gif-wrap {
+  background-color: red;
+  margin-bottom: .8em;
+  position: relative;
+  border: solid black 1px;
+}
+
+.gif-wrap img {
+  min-width: 100%;
+  
+}
+
+.gif-section{
+  width: 50%;
+  max-width: 1025px;
+  margin: auto;
+  border: black solid 2px;
+}
+
+
+@media (min-width: 0) and (max-width: 549px) {
+  .gif-list li {
+    text-align: center;
+    margin: 20px 0 0;
+    font-size: 0;
+  }
+}
