@@ -1,10 +1,22 @@
 *{
-  box-sizing: border-box;
-  border: red solid 1px;
+  
+  background-color: black;
 }
 
 h1{
+  font-size: 40px;
   text-align: center;
+  color: white;
+}
+.nav-link{
+  margin-top: 50px;
+ 
+}
+
+.nav-link a{
+  margin-left: 50px;
+  font-size: 30px;
+  color: white;
 }
 
 .lists{
@@ -23,17 +35,18 @@ nav{
   border: solid black 1px;
 }
 
+ul.gif-list{
+  display: flex;
+  justify-content: space-evenly;
 
-.gif-list a {
-  display: block;
-  margin: auto;
 }
 
+
 .gif-wrap {
-  background-color: red;
-  margin-bottom: .8em;
-  position: relative;
-  border: solid black 1px;
+  display: flex;
+  background-color: ;
+  border: solid grey 1px;
+  margin: 0;
 }
 
 .gif-wrap img {
@@ -42,7 +55,8 @@ nav{
 }
 
 .gif-section{
-  width: 50%;
+  background-color: black;
+  width: 100%;
   max-width: 1025px;
   margin: auto;
   border: black solid 2px;
@@ -56,3 +70,5 @@ nav{
     font-size: 0;
   }
 }
+
+
