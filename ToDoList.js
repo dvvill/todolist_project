@@ -1,6 +1,23 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
+import ToDo from "./ToDo";
 
-function ToDoList() {
+function ToDoList(props) {
+    const [name, setName] = useState('');
+
+    function handleSubmit(e) {
+        e.preventDefault();
+       
+    }
+
+    function handleChange(e) {
+        setName(e.target.value);
+    }
+
+    function addTask(name) {
+        alert(name);
+    }
+
     return (
         <div>
             <div className="todo-list-view">
@@ -10,55 +27,15 @@ function ToDoList() {
                     </h2>
                 <ul role="list" className="todo-list stack-large stack-exception" aria-labelledby="list-heading">
 
-                    <li className="todo">
-                        <div className="todo-list">
-                            <input id="todo-0" type="checkbox" defaultChecked={true} />
-                            <label className="todo-label" htmlFor="todo-0">
-                                To-Do 1
-                            </label>
-                            <button type="button" className="edit-btn">
-                                Edit 
-                            </button>
-                            <button type="button" className="delete-btn btn__danger">
-                                Delete 
-                            </button>
-                        </div>    
-                    </li>
-
-                    <li className="todo">
-                        <div className="todo-list">
-                             <input id="todo-1" type="checkbox" />
-                             <label className="todo-label" htmlFor="todo-1">
-                                To-Do 2
-                             </label>
-                            <button type="button" className="edit-btn">
-                                Edit
-                            </button>
-                            <button type="button" className="delete-btn btn__danger">
-                                Delete 
-                            </button>
-                        </div>   
-                    </li>
-
-                    <li className="todo">
-                        <div className="todo-list">
-                                <input id="todo-2" type="checkbox" />
-                                <label className="todo-label" htmlFor="todo-2">
-                                    To-Do 3
-                                </label>
-                            <button type="button" className="edit-btn">
-                                Edit 
-                            </button>
-                            <button type="button" className="delete-btn btn__danger">
-                                Delete 
-                            </button>
-                        </div>
-                    </li>
+                    <ToDo name="To-Do 1" completed={true} id="todo-0" />
+                    <ToDo name="To-Do 2" completed={false} id="todo-1" />
+                    <ToDo name="To-Do 3" completed={false} id="todo-2" />
+                    
                 </ul>
             </div>
       
 
-         <form>
+         <form onSubmit={handleSubmit} addTask={addTask}>
                 <h2 className="label-wrapper">
                     <label htmlFor="new-todo-input" className="label__lg">
                         Make a new To-Do
@@ -69,7 +46,9 @@ function ToDoList() {
                     id="new-todo-input"
                     className="input input__lg"
                     name="text"
-                    autoComplete="off"/>
+                    autoComplete="off"
+                    value={name}
+                    onChange={handleChange}/>
                 <button type="submit" className="btn btn__primary btn__lg">
                     Add
                 </button>
