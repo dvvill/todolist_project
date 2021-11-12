@@ -11,10 +11,8 @@ function ToDo (props) {
                             <label className="todo-label" htmlFor={props.id}>
                                 {props.name}
                             </label>
-                        <button type="button" className="edit-btn">
-                                Edit 
-                        </button>
-                        <button type="button" className="delete-btn btn__danger">
+                       
+                        <button type="button" className="delete-btn btn__danger" onClick={() => props.deleteTask(props.id)}>
                                 Delete 
                         </button>
                 </div>    
