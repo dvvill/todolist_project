@@ -8,6 +8,20 @@ h1{
   text-align: center;
   color: white;
 }
+
+h2{
+  color: white;
+}
+input{
+  background-color: white;
+}
+
+label{
+  color: white;
+}
+button{
+  background-color: lightgrey;
+}
 .nav-link{
   margin-top: 50px;
  
