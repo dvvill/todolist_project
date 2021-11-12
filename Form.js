@@ -1,40 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react/cjs/react.development";
 
-
-export default function Form(props) {
+function Form(props) {
     const [name, setName] = useState('');
 
     function handleChange(e) {
         setName(e.target.value);
-    }    
-
-    function handleSubmit(e) {
+     }
+    
+     function handleSubmit(e) {
         e.preventDefault();
-            props.addTask(name);
-            setName("");
-    }
+        props.addTask(name);
+        setName('');
+      }
 
     return (
-        <form onSubmit={handleSubmit}>
-                <h2 className="label-wrapper">
-                <label htmlFor="new-todo-input" className="label_lg">
-                    Tasks
-                </label>
-                </h2>
-                <input 
-                    type="text" 
-                    id="new-todo-input" 
-                    className="input input_lg" 
-                    name="text" 
-                    placeholder="text" 
-                    autoComplete="off"
-                    value={name}
-                    onChange={handleChange}
-                 />
-                <button type="submit" className="btn btn_primary btn_lg">
-                    Add
-                </button>
-
-        </form>
+        <form onSubmit={handleSubmit} >
+        <h2 className="label-wrapper">
+            <label htmlFor="new-todo-input" className="label__lg">
+                Make a new To-Do
+            </label>
+        </h2>
+        <input
+            type="text"
+            id="new-todo-input"
+            className="input input__lg"
+            name="text"
+            autoComplete="off"
+            value={name}
+            onChange={handleChange}/>
+        <button type="submit" className="btn btn__primary btn__lg" >
+            Add
+        </button>
+    </form>
     );
 }
+
+ export default Form;

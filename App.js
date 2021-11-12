@@ -7,9 +7,15 @@ import GifList from './GifList';
 import axios from 'axios';
 
 
-function App() {
+function App(props) {
     const [data, setData] = useState([]);
 
+    const DATA = [
+      { id: "todo-0", name: "To-Do 1 ", completed: true },
+      { id: "todo-1", name: "To-Do 2", completed: false },
+      { id: "todo-2", name: "To-Do 3", completed: false }
+    ];
+    
     useEffect(() => {
         axios(`http://api.giphy.com/v1/gifs/trending?&limit=3&api_key=EmU9dpXgxO9PChhSA8GxpHFFNVqwufK1`)
         .then(response => setData(response.data.data))
@@ -22,7 +28,7 @@ function App() {
         <h1>Todo App</h1>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="ToDoList" element={<ToDoList />} />
+        <Route path="ToDoList" element={<ToDoList tasks={DATA}/>} />
        <Route path="CompletedList" element={<CompletedList/>}/>
       </Routes>
 
@@ -33,10 +39,7 @@ function App() {
         <nav className="nav-link">
                 <Link to="/ToDoList">To Do List</Link>
                 <Link to="/CompletedList">Completed List</Link>
-        </nav>
-<nav>
-
-</nav>
+        </nav> 
 
 </div>
   );

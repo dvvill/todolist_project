@@ -1,58 +1,58 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 import ToDo from "./ToDo";
+import Form from "./Form";
+import { nanoid } from "nanoid";
+
+
 
 function ToDoList(props) {
-    const [name, setName] = useState('');
+    const [tasks, setTasks] = useState(props.tasks);
 
-    function handleSubmit(e) {
-        e.preventDefault();
-       
-    }
+    function toggleTaskCompleted(id) {
+        const updatedTasks = tasks.map(task => {
+            if (id === task.id) {
+                return {...task, completed: !task.completed}
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+      }
 
-    function handleChange(e) {
-        setName(e.target.value);
-    }
+    const taskList = tasks.map(task => (
+        <ToDo
+            id={task.id}
+            name={task.name}
+            completed={task.completed}
+            key={task.id}
+            toggleTaskCompleted={toggleTaskCompleted}
+          />
+        )
+      );
 
-    function addTask(name) {
-        alert(name);
-    }
+      function addTask(name) {
+        const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
+        setTasks([...tasks, newTask]);
+      }
+
+
+      const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
+const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
     return (
         <div>
             <div className="todo-list-view">
                     <h1>To Do List</h1>
                     <h2 id="list-heading">
-                        3  remaining To-Dos
+                    {headingText}
                     </h2>
                 <ul role="list" className="todo-list stack-large stack-exception" aria-labelledby="list-heading">
 
-                    <ToDo name="To-Do 1" completed={true} id="todo-0" />
-                    <ToDo name="To-Do 2" completed={false} id="todo-1" />
-                    <ToDo name="To-Do 3" completed={false} id="todo-2" />
+                {taskList}
                     
                 </ul>
             </div>
       
-
-         <form onSubmit={handleSubmit} addTask={addTask}>
-                <h2 className="label-wrapper">
-                    <label htmlFor="new-todo-input" className="label__lg">
-                        Make a new To-Do
-                    </label>
-                </h2>
-                <input
-                    type="text"
-                    id="new-todo-input"
-                    className="input input__lg"
-                    name="text"
-                    autoComplete="off"
-                    value={name}
-                    onChange={handleChange}/>
-                <button type="submit" className="btn btn__primary btn__lg">
-                    Add
-                </button>
-            </form>
+            <Form addTask={addTask}/>
         </div>
     );
 }
